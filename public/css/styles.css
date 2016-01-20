@@ -1,0 +1,71 @@
+#partlist-grid {
+	margin-top: 20px;
+	display: none;
+}
+
+#partlist-grid .part td {
+	display: table-cell;
+	height: 50px;
+	vertical-align: middle;
+}
+
+.part td:first-child {
+	font-weight: bold;
+}
+
+.part-deals td {
+	padding: 0 !important;
+}
+
+.part-deals-grid {
+	display: none;
+	margin: 15px;
+}
+
+.part-deals-grid .row {
+	margin: 0;
+}
+
+.part-deals-grid .row .thumbnail {
+	float: left;
+	width: 64px;
+	height: 64px;
+	overflow: hidden;
+}
+
+.part-deals-grid .row .thumbnail img {
+	width: 64px;
+}
+
+.part-deals-grid .row .title {
+	float: left;
+	width: 70%;
+	margin: 10px;
+}
+
+.part-deals-grid .row .date {
+	float: left;
+}
+
+.dark {
+	background-color: #EEE;
+}
+
+.light {
+	background-color: #FFF;
+}
+
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
