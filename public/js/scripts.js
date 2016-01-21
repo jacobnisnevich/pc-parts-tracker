@@ -48,38 +48,35 @@ var generateRow = function(color, type, name, price, merchant, deals) {
 		<td>" + name + "</td>\
 		<td>" + price + "</td>\
 		<td>" + merchant + "</td>\
-	</tr><tr class='part-deals'><td colspan='4'>";
+		<td><span class='badge'>" + Math.min(deals.length, 5) + "</span></td>\
+	</tr>";
 
-	var dealsGrid = "<div class='part-deals-grid'>";
+	if (deals.length > 0) {	
+		row = row.concat("<tr class='part-deals'><td colspan='5'>");
 
-	deals.slice(0, 5).forEach(function(deal) {
-		var imageSrc = deal["image"];
-		switch (imageSrc) {
-			case "nsfw":
-				imageSrc = "images/nsfw.png";
-				break;
-			case "self":
-				imageSrc = "images/self.png";
-				break;
-			case "default":
-				imageSrc = "images/default.png";
-				break;
-		}
+		var dealsGrid = "<div class='part-deals-grid'>";
 
-		var date = new Date(deal["date"]);
-		var dateString = date.toDateString() + ", " + date.toLocaleTimeString();
+		deals.slice(0, 5).forEach(function(deal) {
+			var imageSrc = deal["image"];
+			if (imageSrc == "nsfw" || imageSrc == "self" || imageSrc == "default") {
+				imageSrc = "images/" + imageSrc + ".png";
+			}
 
-		dealsGrid = dealsGrid.concat("<div class='row clearfix'>\
-			<div class='thumbnail'><img src='" + imageSrc + "'/></div>\
-			<div class='title'><a href='" + deal["link"] + "'>" + deal["title"] + "</a></div>\
-			<div class='date'>" + dateString + "</div>\
-		</div>");
-	});
+			var date = new Date(deal["date"]);
+			var dateString = date.toDateString() + ", " + date.toLocaleTimeString();
 
-	dealsGrid = dealsGrid.concat("</div>");
+			dealsGrid = dealsGrid.concat("<div class='row clearfix'>\
+				<div class='thumbnail'><img src='" + imageSrc + "'/></div>\
+				<div class='title'><a href='" + deal["link"] + "'>" + deal["title"] + "</a></div>\
+				<div class='date'>" + dateString + "</div>\
+			</div>");
+		});
 
-	row = row.concat(dealsGrid);
-	row = row.concat("</td></tr>");
+		dealsGrid = dealsGrid.concat("</div>");
+
+		row = row.concat(dealsGrid);
+		row = row.concat("</td></tr>");
+	}
 
 	return row;
 }

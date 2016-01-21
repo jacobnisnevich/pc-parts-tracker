@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'json'
-require 'byebug'
 
 require File.expand_path('../lib/pc-parts-tracker.rb', __FILE__)
 
